@@ -44,11 +44,11 @@ def mostar_menu():
     print("====Salir====")
     print("7. Salir")
     
-
 def main():
     """Controla el flujo general del sistema. dificultad: 1"""
     mostar_menu()
     pass
 
 main()
+
 

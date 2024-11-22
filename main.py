@@ -1,54 +1,57 @@
-import datetime  
+import datetime
 
-"""Atributos de un experimento: nombre, fecha(DD/MM/AAAA), tipo y resultados numérico"""
-listaDeExperimentos = [
-    ["Experimento 1", "16/11/2024","Química", [5,3,4,5,6,4]],
+listaDeEquipos =[
+    ["seleccion Colombia", "01/01/1924", "Futbol", [0,2,1,2,3]],
+    ["seleccion Chile", "01/01/1923", "Basquet", [1,2,1,2,3]]
 ]
 
-def agregar_experimento():
-    """Permite agregar un nuevo experimento con sus atributos. dificultad: 1"""
+def agregar_equipo():
+    try:
+        nombre = input("Ingrese el nombre del equipo: ")
+        fecha = input("Ingrese la fecha de creacion del equipo: ")
+        tipo = input ("Ingrese el tipo de deporte:")
+        resultados = list(map(int,input("Ingrese los puntos obtenidos por partidos separados por comas:").split(",")))
+        listaDeEquipos.append([nombre,fecha,tipo,resultados])
+        print("Equipo agregado exitosamente")
+    except:
+        print("Error al agregar el equipo")
+        
+def eliminar_equipo():
     pass
 
-def eliminar_experimentos():
-    """Perminte eliminar un experimento. dificultad: 1, requiere el uso de la funcion agregar_experimento"""
-    pass
-
-def visualizar_experimentos():
-    """Permite visualizar todos los experimentos. dificultad: 1. requiere el uso de la funcion agregar_experimento"""
-    pass
+def visualizar_equipos():
+    print("Listado de equipos")
+    for i, equipo in enumerate(listaDeEquipos):
+        print(f"{i}. {equipo[0]} - {equipo[1]} - {equipo[2]} - {equipo[3]}")
+        
 
 def calcular_estadisticas():
-    """Calcular estadisticas basicas(promedios, máximos y mínimos) de un experimento. dificultad: 2. requiere el uso de funcion agregar_experimento"""
-    pass
-
-def comprar_experimentos():
-    """Comparar dos o mas expremientos para determinar los mejores o peores resultados dificultad: 2. requiere el uso de funciones calcular_estudisticas"""
-    pass
-
-def generar_informe():
-    """Generar un informe resumen de los expremintos y sus estadisticas. dificultad: 3. requiere el uso de funciones visualizar_experimentos y calcular_estadisticas"""
-    pass
-
-def mostar_menu():
-    """Muesta el numero principal del programa. dificultad: 1"""
-    print("=====Menu Principal=====")
-    print("=====Gestión de Experimentos====")
-    print("1. Agregar experimento")
-    print("2. Visualizar experimentos")
-    print("3. Eliminar experimentos")
-    print("=====Análisis de Datos====")
-    print("4. Calcular estadisticas")
-    print("5. Comparar experimentos")
-    print("====Informes====")
-    print("6. Generar informe")
-    print("====Salir====")
-    print("7. Salir")
+    visualizar_equipos()
+    index = int(input("Ingrese el numero del equipo:")) 
     
-def main():
-    """Controla el flujo general del sistema. dificultad: 1"""
-    mostar_menu()
-    pass
+    if( 0 <= index < len(listaDeEquipos)):
+        resultados = listaDeEquipos[index][3]
+        promedio = sum(resultados) / len(resultados)
+        maximo = max(resultados)
+        minimo = min(resultados)
+        print(f"Estadisticas del equipo {listaDeEquipos[index][0]}")
+        print(f"Promedio: {promedio}")
+        print(f"Maximo: {maximo}")
+        print(f"Minimo: {minimo}")
 
-main()
+def comprar_equipo():
+    visualizar_equipos()
+    indices = list(map(int, input("Ingrese los indices de los equipos que desea comprar separados por comas:").split(","))) 
+    resultados_comprados = []
+    for index in indices:
+        if( 0 <= index < len(listaDeEquipos)):
+            promedio = sum(listaDeEquipos[index][3]) / len(listaDeEquipos[index][3])
+            resultados_comprados.append((index, promedio))
+        else:
+            print(f"indice {index} no valido")
+    resultados_comprados.sort(key=lambda x: x[1])
+    print("Resultados Comprados")
+    for index, promedio in resultados_comprados:
+        print(f"{index+1}. {listaDeEquipos[index][0]} - {promedio}")  
 
-
+comprar_equipo()       

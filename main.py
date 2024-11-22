@@ -54,4 +54,11 @@ def comprar_equipo():
     for index, promedio in resultados_comprados:
         print(f"{index+1}. {listaDeEquipos[index][0]} - {promedio}")  
 
-comprar_equipo()       
+def generar_informe():
+    pass
+
+def mostar_menu():
+    pass
+
+def main():
+    pass   

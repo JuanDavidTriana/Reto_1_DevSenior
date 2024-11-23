@@ -61,4 +61,4 @@ def mostar_menu():
     print("Menu")
 
 def main():
-    pass   
+    print("Hola")   

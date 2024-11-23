@@ -55,7 +55,7 @@ def comprar_equipo():
         print(f"{index+1}. {listaDeEquipos[index][0]} - {promedio}")  
 
 def generar_informe():
-    pass
+    print("Informe")
 
 def mostar_menu():
     pass

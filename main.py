@@ -58,7 +58,7 @@ def generar_informe():
     print("Informe")
 
 def mostar_menu():
-    pass
+    print("Menu")
 
 def main():
     pass   
